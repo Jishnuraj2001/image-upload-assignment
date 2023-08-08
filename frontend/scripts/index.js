@@ -36,7 +36,7 @@ async function uploadImageFn(formData) {
 
 async function fetchAllContentFn() {
     try {
-      const response = await fetch("http://localhost:3400/allcontent");
+      const response = await fetch("https://adorable-pike-shrug.cyclic.app/allcontent");
       const allContent = await response.json();
       console.log(allContent)
       const contentContainer = document.getElementById("content-container");
@@ -46,7 +46,7 @@ async function fetchAllContentFn() {
 
       // Display each image as a thumbnail
       allContent.forEach((content) => {
-        const imageUrl = `http://localhost:3400/image/${content._id}`;
+        const imageUrl = `https://adorable-pike-shrug.cyclic.app/image/${content._id}`;
         console.log(imageUrl)
         const imageItem = document.createElement("div");
         imageItem.className = "image-item";
@@ -54,7 +54,7 @@ async function fetchAllContentFn() {
         const img = document.createElement("img");
         img.src = imageUrl;
         img.alt = content.imageName;
-        img.style.maxWidth = "150px";
+        img.style.maxWidth = "100%";
         const textName = document.createElement("p");
         textName.textContent = content.text;
 
