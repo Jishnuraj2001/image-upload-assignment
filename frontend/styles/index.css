@@ -1,0 +1,7 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  #image-preview {
+    max-width: 300px;
+    margin: 10px 0;
+  }
