@@ -5,8 +5,7 @@ const { upload } = require("../config/multer");
 const { addContent, getAllContent,getContentById } = require("../controllers/content.controller");
 
 
-contentRouter.post("/upload", upload.single("image"), addContent);
-
+contentRouter.post("/upload", upload.single("testImage"), addContent);
 
 contentRouter.get("/allcontent", getAllContent);
 

@@ -1,7 +1,8 @@
 document.getElementById("upload-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("image", document.getElementById("image").files[0]);
+    //when we append the file the keynames should be same in backend also in multer middleware(upload.single("testImage"))
+    formData.append("testImage", document.getElementById("image").files[0]);
     formData.append("text", document.getElementById("text").value);
     uploadImageFn(formData);
 });
@@ -20,6 +21,7 @@ async function uploadImageFn(formData) {
             alert(data.msg);
             document.getElementById("text").value = "";
             document.getElementById("image").value = "";
+            window.location.reload();
         }else{
             alert(data.msg);
         }
@@ -31,14 +33,11 @@ async function uploadImageFn(formData) {
 
 
 
-
-
-
 async function fetchAllContentFn() {
     try {
-      const response = await fetch("https://adorable-pike-shrug.cyclic.app/allcontent");
+      const response = await fetch("http://localhost:3400/allcontent");
       const allContent = await response.json();
-      console.log(allContent)
+     
       const contentContainer = document.getElementById("content-container");
 
       // Clear existing images
@@ -46,8 +45,7 @@ async function fetchAllContentFn() {
 
       // Display each image as a thumbnail
       allContent.forEach((content) => {
-        const imageUrl = `https://adorable-pike-shrug.cyclic.app/image/${content._id}`;
-        console.log(imageUrl)
+        const imageUrl = `http://localhost:3400/image/${content._id}`;
         const imageItem = document.createElement("div");
         imageItem.className = "image-item";
 
